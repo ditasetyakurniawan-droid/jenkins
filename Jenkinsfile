@@ -22,18 +22,25 @@ spec:
                     credentialsId: 'github-ssh'
             }
         }
+
         stage('Build') {
             steps {
-                echo "Building aplikasi Python..."
-                sh 'python3 --version'
+                container('python') {
+                    echo "Building aplikasi Python..."
+                    sh 'python3 --version'
+                }
             }
         }
+
         stage('Test') {
             steps {
-                echo "Menjalankan test..."
-                sh 'python3 -m unittest || echo "Test dummy berhasil"'
+                container('python') {
+                    echo "Menjalankan test..."
+                    sh 'python3 -m unittest || echo "Test dummy berhasil"'
+                }
             }
         }
+
         stage('Deploy') {
             steps {
                 echo "Deploy selesai."
