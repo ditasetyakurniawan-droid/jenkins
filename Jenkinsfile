@@ -6,7 +6,7 @@ pipeline {
       steps {
         // clone repo kamu via SSH pakai credential yang kita buat
         git branch: 'main',
-            url: 'git@github.com:ditasetya/demo-repo.git',
+            url: 'git@github.com:ditasetyakurniawan-droid/jenkins.git',
             credentialsId: 'github-ssh'
       }
     }
